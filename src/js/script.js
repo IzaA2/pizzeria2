@@ -192,7 +192,37 @@
         thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
         thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
         thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+        thisWidget.setValue(thisWidget.input.value);
       }
+
+
+      initActions(){
+
+        const thisWidget = this;
+  
+        thisWidget.input.addEventListener('change', function(){
+  
+          thisWidget.setvalue(thisWidget.input.value);
+  
+        });
+        thisWidget.linkDecrease.addEventListener('click', function(event){
+
+          event.preventDefault();
+  
+          thisWidget.setvalue(thisWidget.value - 1);
+          
+  
+        });
+
+        thisWidget.linkIncrease.addEventListener('click', function(event){
+
+          event.preventDefault();
+  
+          thisWidget.setvalue(thisWidget.value + 1);
+  
+  
+        });
+  
       initAccordion(){
         const thisProduct = this;
     
