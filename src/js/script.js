@@ -59,6 +59,7 @@
       thisProduct.data = data; 
 
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
 
       console.log('new Product:',thisProduct);
@@ -124,11 +125,15 @@
 
 
 
+  
       getElements(){
         const thisProduct = this;
-        thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-        // console.log(thisProduct.accordionTrigger);
 
+        thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+        thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+        thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+        thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+        thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       };
       initAccordion(){
         const thisProduct = this;
@@ -153,7 +158,6 @@
           // console.log(thisProduct);
     
           /* find all active products */
-          debugger;
           const allActiveProducts = document.querySelectorAll('product.active');
           //  console.log(allActiveProducts);
   
