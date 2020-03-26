@@ -62,7 +62,9 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
+      thisWidget.getElements(element);
      
 
       console.log('new Product:',thisProduct);
@@ -95,6 +97,19 @@
       });
 
   };
+
+    setValue(value){
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+      /*TODO: Add validation */ 
+
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+
+
+
+    };
 
 
 
@@ -165,7 +180,19 @@
         thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
         thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
         thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+
+        thisProduct.amountWidgetElem = thisProduct.querySelector(element.select.menuProduct.amountWidget); 
       };
+
+
+      getElements(element){
+        const thisWidget = this;
+      
+        thisWidget.element = element;
+        thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+        thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+        thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+      }
       initAccordion(){
         const thisProduct = this;
     
@@ -217,11 +244,27 @@
         /* END: click event listener to trigger */
         
       };
+
+      initAmountWidget(){
+        const thisProduct = this;
+
+        thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+
+      };
       
 
      
 
     
+  }
+  class AmountWidget{
+    constructor (element){
+      const thisWidget = this;
+
+      console.log('AmountWidget:',thisWidget);
+      console.log('constructor arguments:',element);
+    
+    }
   }
 
   const app = {
